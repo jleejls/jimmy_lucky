@@ -78,11 +78,12 @@
     }
 
     .box img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      display:block;
-    }
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position: top center;
+  display:block;
+}
 
     .zipbutton{
       display:none;
@@ -227,7 +228,23 @@
   border-radius: 10px;
   text-align: center;
 }
-  </style>
+
+<style>
+  .trigger-btn,
+  .trigger-button,
+  .trigger-bar,
+  .trigger-wrap,
+  .trigger-container,
+  .bottom-buttons,
+  .action-buttons,
+  .hotdog-buttons,
+  [data-action],
+  button[data-action] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
 </head>
 <body>
   <div id="lesson-select">
@@ -237,16 +254,12 @@
 
   <div id="structure">
 
-<div style="background:yellow;color:black;font-size:22px;padding:1px;">
-ADMINISTRATOR LESSON STRUCTURE LOADED
-</div>
 
-</div>
 
-  <div id="pbar" class="zipbutton">
+    <div id="pbar" class="zipbutton">
     <div class="buttonz" data-btn="continue" title="Continuar (siguiente lección)">
       <img src="./trigger/adelante.png" alt="Adelante">
-    </div>
+    </div> 
     <div class="buttonz" data-btn="exit" title="Salir del programa">
       <img src="./trigger/exit.png" alt="exit">
     </div> 
@@ -268,7 +281,7 @@ ADMINISTRATOR LESSON STRUCTURE LOADED
     <div class="buttonz" data-btn="translate" title="Traducir">
       <img src="./trigger/translate.png" alt="Translate">
     </div>
-  </div>
+  
 
   <div id="lesson-chip" aria-live="polite" aria-atomic="true">Lección 1</div>
 
@@ -463,28 +476,28 @@ ADMINISTRATOR LESSON STRUCTURE LOADED
       }
 
       const frameMap = {
-        1:  { top: '2vh',  left: '2vw',  width: '2VW', height: '3vh' },
-        2:  { top: '21vh', left: '2vw',  width: '2VW', height: '3vh' },
-        3:  { top: '41vh', left: '2vw',  width: '2VW', height: '3vh' },
-        4:  { top: '61vh', left: '2vw',  width: '2VW', height: '3vh' },
-        5:  { top: '81vh', left: '2vw',  width: '2VW', height: '3vh' },
-        6:  { top: '2vh',  left: '88vw', width: '2VW', height: '3vh' },
-        7:  { top: '21vh', left: '88vw', width: '2VW', height: '3vh' },
-        8:  { top: '41vh', left: '88vw', width: '2VW', height: '3vh' },
-        9:  { top: '61vh', left: '88vw', width: '2VW', height: '3vh' },
-        10: { top: '81vh', left: '88vw', width: '2VW', height: '17vh' }, 
-        11: { top: '61vh', left: '20VW', width: '20VW', height: '33VW' },
-        12: { top: '61vh', left: '29vw', width: '20VW', height: '33VW' },
-        13: { top: '61vh', left: '44vw', width: '20VW', height: '33VW' },
-        14: { top: '61vh', left: '44vw', width: '20VW', height: '33VW' },
-        15: { top: '31vh', left: '29vw', width: '20VW', height: '33VW' },
-        16: { top: '31vh', left: '44vw', width: '20VW', height: '33VW' },
-        17: { top: '31vh', left: '14VW', width: '20VW', height: '33VW' },
-        18: { top: '0vh',  left: '26vw', width: '20VW', height: '33VW' },
-        19: { top: '0vh',  left: '46vw', width: '20VW', height: '33VW' },
-        20: { top: '0vh',  left: '66vw', width: '20VW', height: '33VW' },
-        21: { top: '2vh',  left: '74vw', width: '20VW', height: '33VW' },
-        22: { top: '31vh', left: '74vw', width: '20VW', height: '33VW' }
+        1:  { top: '2vh',  left: '-2vw',  width: '2vw', height: '3vh' },
+        2:  { top: '21vh', left: '-2vw',  width: '2vw', height: '3vh' },
+        3:  { top: '41vh', left: '-2vw',  width: '2vw', height: '3vh' },
+        4:  { top: '91vh', left: '-2vw',  width: '2vw', height: '3vh' },
+        5:  { top: '81vh', left: '-2vw',  width: '2vw', height: '3vh' },
+        6:  { top: '2vh',  left: '188vw', width: '2vw', height: '3vh' },
+        7:  { top: '21vh', left: '188vw', width: '2vw', height: '3vh' },
+        8:  { top: '41vh', left: '188vw', width: '2vw', height: '3vh' },
+        9:  { top: '91vh', left: '188vw', width: '2vw', height: '3vh' },
+        10: { top: '81vh', left: '188vw', width: '2vw', height: '17vh' }, 
+        11: { top: '91vh', left: '20vw', width: '20vw', height: '18.1vw' },
+        12: { top: '91vh', left: '29vw', width: '20vw', height: '18.1vw' },
+        13: { top: '91vh', left: '44vw', width: '20vw', height: '18.1vw' },
+        14: { top: '91vh', left: '44vw', width: '20vw', height: '18.1vw' },
+        15: { top: '91vh', left: '29vw', width: '20vw', height: '18.1vw' },
+        16: { top: '91vh', left: '44vw', width: '20vw', height: '18.1vw' },
+        17: { top: '40.2vh', left: '28.1vw', width: '20vw', height: '18.1vw' },
+        18: { top: '1vh',  left: '28.1vw', width: '20vw', height: '18.1vw' },
+        19: { top: '1vh',  left: '46vw', width: '20vw', height: '18.1vw' },
+        20: { top: '1vh',  left: '66vw', width: '20vw', height: '18.1vw' },
+    //    21: { top: '2vh',  left: '74vw', width: '20vw', height: '18.1vw' },
+    //    22: { top: '31vh', left: '74vw', width: '20vw', height: '18.1vw' }
       };
 
 
