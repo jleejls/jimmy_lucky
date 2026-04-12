@@ -17,7 +17,7 @@
 
     body{
       margin:0;
-      font-group: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background:#f0f8ff;
       color:#111;
       line-height:1.35;
@@ -78,56 +78,45 @@
     }
 
     .box img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position: top center;
-  display:block;
-}
-
-    .zipbutton{
-      display:none;
-      flex-direction:row;
-      align-items:center;
-      justify-content:center;
-      gap:2vh;
-      position:fixed;
-      bottom:2vh;
-      left:50%;
-      transform:translateX(-50%);
-      background-color:#f0f0f0;
-      padding:6px 10px;
-      border-radius:10px;
-      border:1px solid #ddd;
-      z-index: 50;
-    }
-
-    .buttonz{
-      border:2px solid #4CAF50;
-      border-radius:1vw;
-      height:5vh;
-      width:5vw;
-      min-width:56px;
-      min-height:36px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      background-color:#d05000;
-      cursor: pointer;
-    }
-
-    .buttonz img{
-      max-width:100%;
-      max-height:100%;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position: top center;
       display:block;
+    }
+
+    #trigger-layer{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      display: none;
+    }
+
+    .trigger-btn{
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      pointer-events: auto;
+      z-index: 61;
+    }
+
+    .trigger-btn img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
       pointer-events: none;
     }
 
     #lesson-chip{
       position: fixed;
-      bottom: 17vh;
-      right:20vw;
       background: #ffffff;
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -136,9 +125,8 @@
       display: none;
       box-shadow: 0 2px 6px rgba(0,0,0,.08);
       user-select: none;
-      z-index: 50;
+      z-index: 70;
     }
-
 
     .contact-modal{
       position: fixed;
@@ -187,7 +175,8 @@
       word-break: break-word;
     }
 
-    .contact-close{
+    .contact-close,
+    .modal-content button{
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -201,50 +190,36 @@
       cursor: pointer;
     }
 
-    .contact-close:hover{ background: #eef7ff; }
-    .contact-close:focus{ outline: var(--focus); }
+    .contact-close:hover,
+    .modal-content button:hover{ background: #eef7ff; }
 
-    
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
+    .contact-close:focus,
+    .modal-content button:focus{ outline: var(--focus); }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 130;
+      padding: 20px;
+    }
 
-.modal.hidden {
-  display: none;
-}
+    .modal.hidden {
+      display: none;
+    }
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-<style>
-  .trigger-btn,
-  .trigger-button,
-  .trigger-bar,
-  .trigger-wrap,
-  .trigger-container,
-  .bottom-buttons,
-  .action-buttons,
-  .hotdog-buttons,
-  [data-action],
-  button[data-action] {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-</style>
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 420px;
+      width: min(92vw, 420px);
+    }
+  </style>
 </head>
 <body>
   <div id="lesson-select">
@@ -252,40 +227,36 @@
     <div id="lesson-buttons"></div>
   </div>
 
-  <div id="structure">
+  <div id="structure"></div>
 
-
-
-    <div id="pbar" class="zipbutton">
-    <div class="buttonz" data-btn="continue" title="Continuar (siguiente lección)">
+  <div id="trigger-layer" aria-hidden="true">
+    <button class="trigger-btn" data-btn="continue" title="Continuar (siguiente lección)">
       <img src="./trigger/adelante.png" alt="Adelante">
-    </div> 
-    <div class="buttonz" data-btn="exit" title="Salir del programa">
-      <img src="./trigger/exit.png" alt="exit">
-    </div> 
-    <div class="buttonz" data-btn="choosel" title="Ir a selección de lecciones">
-      <img src="./trigger/choosel.png" alt="choosel">
-    </div>
-    <div class="buttonz" data-btn="help" title="Ayuda">
-      <img src="./trigger/help.png" alt="help">
-    </div>
-    <div class="buttonz" data-btn="donate" title="Donar">
-      <img src="./trigger/donate.png" alt="Donate">
-    </div>
-    <div class="buttonz" data-btn="email" title="Correo (Gmail compose)">
-      <img src="./trigger/email.png" alt="email">
-    </div>
-    <div class="buttonz" data-btn="goback" title="lagente">
-      <img src="./trigger/goback.png" alt="Back">
-    </div>
-    <div class="buttonz" data-btn="translate" title="Traducir">
-      <img src="./trigger/translate.png" alt="Translate">
-    </div>
-  
+    </button>
+    <button class="trigger-btn" data-btn="exit" title="Salir del programa">
+      <img src="./trigger/exit.png" alt="Salir">
+    </button>
+    <button class="trigger-btn" data-btn="choosel" title="Ir a selección de lecciones">
+      <img src="./trigger/choosel.png" alt="Seleccionar lección">
+    </button>
+    <button class="trigger-btn" data-btn="help" title="Ayuda">
+      <img src="./trigger/help.png" alt="Ayuda">
+    </button>
+    <button class="trigger-btn" data-btn="donate" title="Donar">
+      <img src="./trigger/donate.png" alt="Donar">
+    </button>
+    <button class="trigger-btn" data-btn="email" title="Correo (Gmail compose)">
+      <img src="./trigger/email.png" alt="Correo">
+    </button>
+    <button class="trigger-btn" data-btn="goback" title="lagente">
+      <img src="./trigger/goback.png" alt="Regresar">
+    </button>
+    <button class="trigger-btn" data-btn="translate" title="Traducir">
+      <img src="./trigger/translate.png" alt="Traducir">
+    </button>
+  </div>
 
   <div id="lesson-chip" aria-live="polite" aria-atomic="true">Lección 1</div>
-
-
 
   <div id="contact-modal" class="contact-modal" aria-hidden="true">
     <div class="contact-card" role="dialog" aria-modal="true" aria-labelledby="contact-title">
@@ -298,27 +269,73 @@
     </div>
   </div>
 
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+      <button id="modal-ok" type="button">OK</button>
+    </div>
+  </div>
+
   <script>
-   
     document.addEventListener('DOMContentLoaded', () => {
       const lessonSelect    = document.getElementById('lesson-select');
       const structureArea   = document.getElementById('structure');
       const lessonButtonsEl = document.getElementById('lesson-buttons');
-      const pbar            = document.getElementById('pbar');
+      const triggerLayer    = document.getElementById('trigger-layer');
       const lessonChip      = document.getElementById('lesson-chip');
       const contactModal    = document.getElementById('contact-modal');
       const contactCloseBtn = document.getElementById('contact-close');
       const exitUrl         = 'blank.html';
-     let selectedLesson   = 1;
-     let selectedPersonId = null;
-     let highlightedBox   = null;
+      let selectedLesson    = 1;
+      let selectedPersonId  = null;
+      let highlightedBox    = null;
+
+      const triggerConfigs = {
+  continue:  { left: '2px',   bottom: '166px', width: '56px', height: '36px' },
+  exit:      { left: '72px',  bottom: '166px', width: '56px', height: '36px' },
+  choosel:   { left: '136px', bottom: '166px', width: '56px', height: '36px' },
+  help:      { left: '200px', bottom: '166px', width: '56px', height: '36px' },
+  donate:    { left: '2px', bottom: '114px', width: '56px', height: '36px' },
+  email:     { left: '72px', bottom: '114px', width: '56px', height: '36px' },
+  goback:    { left: '136px', bottom: '114px', width: '56px', height: '36px' },
+  translate: { left: '200px', bottom: '114px', width: '56px', height: '36px' }
+};
+
+      const lessonBadgeConfig = {
+   left:'2px',
+        bottom: '110px'
+      };
+
+      function applyTriggerLayout(){
+        document.querySelectorAll('.trigger-btn').forEach(btn => {
+          const cfg = triggerConfigs[btn.dataset.btn];
+          if (!cfg) return;
+          btn.style.left = cfg.left;
+          btn.style.bottom = cfg.bottom;
+          btn.style.width = cfg.width;
+          btn.style.height = cfg.height;
+          btn.style.minWidth = cfg.minWidth || '0';
+          btn.style.minHeight = cfg.minHeight || '0';
+        });
+
+        lessonChip.style.right = lessonBadgeConfig.right;
+        lessonChip.style.bottom = lessonBadgeConfig.bottom;
+      }
+
+      function pad2(num) {
+        return String(num).padStart(2, '0');
+      }
 
       function objectAud(num) {
-      return `./group/lesson${selectedLesson}/sound/${pad2(num)}.m4a`;
+        return `./group/lesson${selectedLesson}/sound/${pad2(num)}.m4a`;
       }
 
       function showLessonChip(show){
         lessonChip.style.display = show ? 'block' : 'none';
+      }
+
+      function showTriggerLayer(show){
+        triggerLayer.style.display = show ? 'block' : 'none';
       }
 
       function updateLessonChip(){
@@ -335,20 +352,27 @@
       }
 
       const AudioJoiner = (() => {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        let ctx = null;
         const cache = new Map();
         let playing = [];
 
+        function getCtx(){
+          if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+          return ctx;
+        }
+
         async function resume(){
-          if (ctx.state !== 'running') {
-            try { await ctx.resume(); } catch(e) {}
+          const audioCtx = getCtx();
+          if (audioCtx.state !== 'running') {
+            try { await audioCtx.resume(); } catch(e) {}
           }
         }
 
         async function load(url){
+          const audioCtx = getCtx();
           if (cache.has(url)) return cache.get(url);
           const ab = await fetch(url).then(r => r.arrayBuffer());
-          const buf = await ctx.decodeAudioData(ab);
+          const buf = await audioCtx.decodeAudioData(ab);
           cache.set(url, buf);
           return buf;
         }
@@ -361,23 +385,24 @@
         }
 
         async function playJoined(personUrl, objectUrl, overlapMs = 80){
+          const audioCtx = getCtx();
           await resume();
           stopAll();
 
           const [pBuf, oBuf] = await Promise.all([load(personUrl), load(objectUrl)]);
 
-          const p = ctx.createBufferSource();
-          const o = ctx.createBufferSource();
-          const pg = ctx.createGain();
-          const og = ctx.createGain();
+          const p = audioCtx.createBufferSource();
+          const o = audioCtx.createBufferSource();
+          const pg = audioCtx.createGain();
+          const og = audioCtx.createGain();
 
           p.buffer = pBuf;
           o.buffer = oBuf;
 
-          p.connect(pg).connect(ctx.destination);
-          o.connect(og).connect(ctx.destination);
+          p.connect(pg).connect(audioCtx.destination);
+          o.connect(og).connect(audioCtx.destination);
 
-          const now = ctx.currentTime;
+          const now = audioCtx.currentTime;
           const overlap = overlapMs / 1000;
           const seam = now + pBuf.duration;
 
@@ -466,7 +491,7 @@
           selectedLesson = i;
           lessonSelect.style.display = 'none';
           structureArea.style.display = 'block';
-          pbar.style.display = 'flex';
+          showTriggerLayer(true);
           audioBus.stopAll();
           loadStructure();
           updateLessonChip();
@@ -477,31 +502,26 @@
 
       const frameMap = {
         1:  { top: '330px', left: '-1px',   width: '80px', height: '80px' },
-        2:  { top: '330px', left: '76px',  width: '40px', height: '40px' },
+        2:  { top: '330px', left: '76px',   width: '40px', height: '40px' },
         3:  { top: '330px', left: '133px',  width: '40px', height: '40px' },
         4:  { top: '330px', left: '193px',  width: '40px', height: '40px' },
         5:  { top: '330px', left: '240px',  width: '40px', height: '40px' },
-        6:  { top: '383px',  left:'-1px', width: '80px', height: '40px' },
-        7:  { top: '383px', left: '76px', width: '40px', height: '40px' },
-        8:  { top: '383px', left: '133px', width: '40px', height: '40px' },
-        9:  { top: '383px', left: '193px', width: '40px', height: '40px' },
-        10: { top: '383px', left: '240px', width: '40px', height: '40px' }, 
-     
- 11: { top: '220px', left: '2px',   width: '101.2px', height: '101.2px' },
-12: { top: '220px', left: '102.3px',  width: '101.2px', height: '101.2px' },
-13: { top: '220px', left: '199.1px', width: '101.2px', height: '101.2px' },
-14: { top: '220px', left: '199.1px', width: '101.2px', height: '101.2px' },
-15: { top: '111.1px', left: '199.1px', width: '101.2px', height: '101.2px' },
-16: { top: '111.1px', left: '102.3px',  width: '101.2px', height: '101.2px' },
-17: { top: '111.1px', left: '2px',   width: '101.2px', height: '101.2px' },
-18: { top: '0px',   left: '2px',   width: '101.2px', height: '101.2px' },
-19: { top: '0px',   left: '102.3px',  width: '101.2px', height: '101.2px' },
-20: { top: '0px',   left: '199.1px', width: '101.2px', height: '101.2px' },
-    //    21: { top: '2vh',  left: '74vw',  width: '275px', height: '275px' },
-    //    22: { top: '31vh', left: '74vw',  width: '275px', height: '275px' }
+        6:  { top: '383px', left:'-1px',    width: '80px', height: '40px' },
+        7:  { top: '383px', left: '76px',   width: '40px', height: '40px' },
+        8:  { top: '383px', left: '133px',  width: '40px', height: '40px' },
+        9:  { top: '383px', left: '193px',  width: '40px', height: '40px' },
+        10: { top: '383px', left: '240px',  width: '40px', height: '40px' },
+        11: { top: '220px', left: '2px',    width: '101.2px', height: '101.2px' },
+        12: { top: '220px', left: '102.3px',width: '101.2px', height: '101.2px' },
+        13: { top: '220px', left: '199.1px',width: '101.2px', height: '101.2px' },
+        14: { top: '220px', left: '199.1px',width: '101.2px', height: '101.2px' },
+        15: { top: '111.1px', left: '199.1px', width: '101.2px', height: '101.2px' },
+        16: { top: '111.1px', left: '102.3px', width: '101.2px', height: '101.2px' },
+        17: { top: '111.1px', left: '2px',    width: '101.2px', height: '101.2px' },
+        18: { top: '0px',   left: '2px',      width: '101.2px', height: '101.2px' },
+        19: { top: '0px',   left: '102.3px',  width: '101.2px', height: '101.2px' },
+        20: { top: '0px',   left: '199.1px',  width: '101.2px', height: '101.2px' }
       };
-
-
 
       function showContactModal(){
         contactModal.classList.add('is-open');
@@ -512,6 +532,17 @@
       function hideContactModal(){
         contactModal.classList.remove('is-open');
         contactModal.setAttribute('aria-hidden', 'true');
+      }
+
+      function showModal(message) {
+        const modal = document.getElementById('modal');
+        const text = document.getElementById('modal-text');
+        text.textContent = message;
+        modal.classList.remove('hidden');
+      }
+
+      function closeModal() {
+        document.getElementById('modal').classList.add('hidden');
       }
 
       function clearSelection(){
@@ -527,82 +558,82 @@
         highlightedBox = boxEl;
       }
 
-     function loadStructure(){
-  structureArea.innerHTML = '';
-  clearSelection();
-
-  const urls = [];
-
-  for(let i = 1; i <= 22; i++){
-    if (i === 13) continue;
-
-    const d = document.createElement('div');
-    d.className = 'box';
-    d.id = `box${i}`;
-
-    const pos = frameMap[i];
-    d.style.top = pos.top;
-    d.style.left = pos.left;
-    d.style.width = pos.width;
-    d.style.height = pos.height;
-
-    console.log("Selected lesson =", selectedLesson);
-
-    const img = document.createElement('img');
-    const url = `./group/lesson${selectedLesson}/image/p${i}.png?v=${Date.now()}`;
-    console.log("IMAGE LOAD:", { selectedLesson, i, url });
-    img.src = url;
-    img.alt = `p${i}`;
-    d.appendChild(img);
-
-    d.addEventListener('click', () => {
-      if (i === 21 || i === 22) {
+      function loadStructure(){
+        structureArea.innerHTML = '';
         clearSelection();
-        audioBus.playOne(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
-        return;
-      }
 
-      if (i >= 11 && i <= 20) {
-        selectPerson(d, i);
-        audioBus.playOne(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
-        return;
-      }
+        const urls = [];
 
-      if (i >= 1 && i <= 10) {
-        if (selectedPersonId) {
-          audioBus.playChain(
-            `./group/lesson${selectedLesson}/sound/${selectedPersonId}.m4a`,
-            `./group/lesson${selectedLesson}/sound/${String(i).padStart(2, '0')}.m4a`
-          );
-          clearSelection();
-          selectedPersonId = null;
-        } else {
-          audioBus.playOne(`./group/lesson${selectedLesson}/sound/${String(i).padStart(2, '0')}.m4a`);
+        for(let i = 1; i <= 22; i++){
+          if (i === 13) continue;
+          if (!frameMap[i] && i !== 21 && i !== 22) continue;
+
+          const d = document.createElement('div');
+          d.className = 'box';
+          d.id = `box${i}`;
+
+          if (frameMap[i]) {
+            const pos = frameMap[i];
+            d.style.top = pos.top;
+            d.style.left = pos.left;
+            d.style.width = pos.width;
+            d.style.height = pos.height;
+          } else {
+            d.style.display = 'none';
+          }
+
+          const img = document.createElement('img');
+          const url = `./group/lesson${selectedLesson}/image/p${i}.png?v=${Date.now()}`;
+          img.src = url;
+          img.alt = `p${i}`;
+          d.appendChild(img);
+
+          d.addEventListener('click', () => {
+            if (i === 21 || i === 22) {
+              clearSelection();
+              audioBus.playOne(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
+              return;
+            }
+
+            if (i >= 11 && i <= 20) {
+              selectPerson(d, i);
+              audioBus.playOne(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
+              return;
+            }
+
+            if (i >= 1 && i <= 10) {
+              if (selectedPersonId) {
+                audioBus.playChain(
+                  `./group/lesson${selectedLesson}/sound/${selectedPersonId}.m4a`,
+                  objectAud(i)
+                );
+                clearSelection();
+              } else {
+                audioBus.playOne(objectAud(i));
+              }
+            }
+          });
+
+          structureArea.appendChild(d);
         }
-        return;
+
+        for (let i = 1; i <= 20; i++) {
+          if (i === 14) continue;
+          if (i >= 1 && i <= 10) {
+            urls.push(objectAud(i));
+          } else {
+            urls.push(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
+          }
+        }
+
+        setTimeout(() => AudioJoiner.preload(urls), 200);
       }
-    });
-
-    structureArea.appendChild(d);
-  }
-
-  for (let i = 1; i <= 20; i++) {
-    if (i === 14) continue;
-    if (i >= 1 && i <= 10) {
-      urls.push(`./group/lesson${selectedLesson}/sound/${String(i).padStart(2, '0')}.m4a`);
-    } else {
-      urls.push(`./group/lesson${selectedLesson}/sound/${i}.m4a`);
-    }
-  }
-
-  setTimeout(() => AudioJoiner.preload(urls), 200);
-}
 
       function showSelection(){
         audioBus.stopAll();
         structureArea.style.display = 'none';
         lessonSelect.style.display = 'block';
-        pbar.style.display = 'none';
+        showTriggerLayer(false);
         showLessonChip(false);
         clearSelection();
       }
@@ -617,7 +648,7 @@
       }
 
       document.addEventListener('click', ev => {
-        const btn = ev.target.closest && ev.target.closest('.buttonz');
+        const btn = ev.target.closest && ev.target.closest('.trigger-btn');
         if (!btn) return;
 
         const action = btn.dataset.btn;
@@ -657,10 +688,10 @@
         }
 
         if (action === 'email') {
-         showModal("This particular button is not programmed yet.");
-        } 
-       
-      
+          showModal('This particular button is not programmed yet.');
+          return;
+        }
+
         if (action === 'translate') {
           audioBus.playOne(`./group/translation/lesson${selectedLesson}.m4a`);
           return;
@@ -672,50 +703,35 @@
         }
 
         if (action === 'donate') {
-          alert('Botón de donación todavía no programado.');
+          showModal('Botón de donación todavía no programado.');
           return;
         }
-
       }, false);
 
-
-
       contactCloseBtn.addEventListener('click', hideContactModal);
-
       contactModal.addEventListener('click', ev => {
         if (ev.target === contactModal) hideContactModal();
+      });
+      document.getElementById('modal-ok').addEventListener('click', closeModal);
+      document.getElementById('modal').addEventListener('click', ev => {
+        if (ev.target.id === 'modal') closeModal();
       });
 
       document.addEventListener('keydown', ev => {
         if (ev.key === 'Escape' && contactModal.classList.contains('is-open')) {
           hideContactModal();
         }
+        if (ev.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) {
+          closeModal();
+        }
       });
 
+      window.addEventListener('resize', applyTriggerLayout);
       window.addEventListener('pagehide', () => audioBus.stopAll());
       window.addEventListener('beforeunload', () => audioBus.stopAll());
+
+      applyTriggerLayout();
     });
-
-    function showModal(message) {
-    const modal = document.getElementById('modal');
-    const text = document.getElementById('modal-text');
-
-    text.textContent = message;
-    modal.classList.remove('hidden');
-}
-
-function closeModal() {
-    document.getElementById('modal').classList.add('hidden');
-}
   </script>
-  ...your page content...
-
-<div id="modal" class="modal hidden">
-  <div class="modal-content">
-    <p id="modal-text"></p>
-    <button onclick="closeModal()">OK</button>
-  </div>
-</div>
-
 </body>
 </html>
