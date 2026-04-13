@@ -59,14 +59,14 @@
     .nav-button:hover{ background: var(--slot-hover); }
     .nav-button:focus{ outline: var(--focus); }
 
-    #structure{
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: none;
-      background-color: #f0f8ff;
-      overflow: hidden;
-    }
+   #structure{
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  display: none;
+  background-color: #f0f8ff;
+  overflow: visible;
+}
 
     .box{
       position: absolute;
@@ -291,20 +291,20 @@
       let highlightedBox    = null;
 
       const triggerConfigs = {
-  continue:  { left: '2px',   bottom: '303px', width: '63px', height: '36px' },
-  exit:      { left: '72px',  bottom: '303px', width: '63px', height: '36px' },
-  choosel:   { left: '136px', bottom: '303px', width: '63px', height: '36px' },
-  help:      { left: '200px', bottom: '303px', width: '63px', height: '36px' },
-  donate:    { left: '2px', bottom: '258px', width: '63px', height: '36px' },
-  email:     { left: '72px', bottom: '258px', width: '63px', height: '36px' },
-  goback:    { left: '136px', bottom: '258px', width: '63px', height: '36px' },
-  translate: { left: '200px', bottom: '258px', width: '63px', height: '36px' }
+  continue:  { left: '.1vw',  bottom: '25.2vh',  width: '6.7vw', height: '6.7vh' },
+  exit:      { left: '6vw', bottom: '25.2vh',  width: '6.7vw', height: '6.7vh' },
+  choosel:   { left: '12vw', bottom: '25.2vh',  width: '6.7vw', height: '6.7vh' },
+  help:      { left: '18vw', bottom: '25.2vh',  width: '6.7vw', height: '6.7vh' },
+  donate:    { left: '.1vw',  bottom: '15.6vh',  width: '6.7vw', height: '8vh' },
+  email:     { left: '6vw', bottom: '15.6vh',  width: '6.7vw', height: '6.7vh' },
+  goback:    { left: '12vw', bottom: '15.6vh',  width: '6.7vw', height: '6.7vh' },
+  translate: { left: '18vw', bottom: '15.6vh',  width: '6.7vw', height: '6.7vh' }
 };
 
-    /*  const lessonBadgeConfig = {
-        right:'1170px',
-        bottom: '135px'
-      }; */
+const lessonBadgeConfig = {
+  right: '87vw',
+  bottom: '8vh'
+};
 
       function applyTriggerLayout(){
         document.querySelectorAll('.trigger-btn').forEach(btn => {
@@ -501,26 +501,26 @@
       }
 
       const frameMap = {
-        1:  { top: '214px', left: '-1px',   width: '40px', height: '40px' },
-        2:  { top: '214px', left: '63px',   width: '40px', height: '40px' },
-        3:  { top: '214px', left: '133px',  width: '40px', height: '40px' },
-        4:  { top: '214px', left: '193px',  width: '40px', height: '40px' },
-        5:  { top: '214px', left: '240px',  width: '40px', height: '40px' },
-        6:  { top: '259px', left:'-1px',    width: '63px', height: '40px' },
-        7:  { top: '259px', left: '63px',   width: '40px', height: '40px' },
-        8:  { top: '259px', left: '133px',  width: '40px', height: '40px' },
-        9:  { top: '259px', left: '193px',  width: '40px', height: '40px' },
-        10: { top: '259px', left: '240px',  width: '40px', height: '40px' },
-        11: { top: '142px', left: '2px',    width: '69px', height: '69px' },
-        12: { top: '142px', left: '102.3px',width: '69px', height: '69px' },
-        13: { top: '142px', left: '199.1px',width: '69px', height: '69px' },
-        14: { top: '142px', left: '199.1px',width: '69px', height: '69px' },
-        15: { top: '69px', left: '199.1px', width: '69px', height: '69px' },
-        16: { top: '69px', left: '102.3px', width: '69px', height: '69px' },
-        17: { top: '69px', left: '2px',    width: '69px', height: '69px' },
-        18: { top: '0px',   left: '2px',      width: '69px', height: '69px' },
-        19: { top: '0px',   left: '102.3px',  width: '69px', height: '69px' },
-        20: { top: '0px',   left: '199.1px',  width: '69px', height: '69px' }
+        1:  { top: '44.4vh', left: '.7vw', width: '3.4vw', height: '3.4vw' },
+        2:  { top: '44.4vh', left: '6.7vw', width: '3.4vw', height: '3.4vw' },
+        3:  { top: '44.4vh', left: '11.7vw', width: '3.4vw', height: '3.4vw' },
+        4:  { top: '44.4vh', left: '15.9vw', width: '3.4vw', height: '3.4vw' },
+        5:  { top: '44.4vh', left: '19.7vw', width: '3.4vw', height: '3.4vw' },
+        6:  { top: '55.5vh', left: '.7vw', width: '3.4vw', height: '3.4vw' },
+        7:  { top: '55.5vh', left: '6.7vw', width: '3.4vw', height: '3.4vw' },
+        8:  { top: '55.5vh', left: '11.7vw', width: '3.4vw', height: '3.4vw' },
+        9:  { top: '55.5vh', left: '15.9vw', width: '3.4vw', height: '3.4vw' },
+        10: { top: '55.5vh', left: '19.7vw', width: '3.4vw', height: '3.4vw' },
+        11: { top: '29.5vh', left: '0.7vw',  width: '6.7vw', height: '6.7vw' },
+        12: { top: '29.5vh', left: '8.7vw', width: '6.7vw', height: '6.7vw' },
+        13: { top: '29.5vh', left: '16.7vw', width: '6.7vw', height: '6.7vw' },
+        14: { top: '29.5vh', left: '16.7vw', width: '6.7vw', height: '6.7vw' },
+        15: { top: '14.4vh', left: '.7px', width: '6.7vw', height: '6.7vw' },
+        16: { top: '14.4vh', left: '8.7vw', width: '6.7vw', height: '6.7vw' },
+        17: { top: '14.4vh', left: '16.7vw', width: '6.7vw', height: '6.7vw' },
+        18: { top: '0vh',    left: '0.7vw',  width: '6.7vw', height: '6.7vw' },
+        19: { top: '0vh',    left: '8.7vw', width: '6.7vw', height: '6.7vw' },
+        20: { top: '0vh',    left: '16.7vw', width: '6.7vw', height: '6.7vw' }
       /*  {id:21,top:'1vh',left:'65vw',width:BIG.w,height:BIG.h},
            {id:22,top:'33vh',left:'65vw',width:BIG.w,height:BIG.h}*/
       };
