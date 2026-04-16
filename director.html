@@ -98,15 +98,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
+      background: brown;
+      border-radius: 8px;
       border: none;
+    
       padding: 0;
       margin: 0;
       cursor: pointer;
       pointer-events: auto;
       z-index: 61;
     }
-
+.trigger-btn:hover{
+  transform: scale(1.05);
+}
     .trigger-btn img{
       width: 100%;
       height: 100%;
@@ -239,8 +243,8 @@
     <button class="trigger-btn" data-btn="choosel" title="Ir a selección de lecciones">
       <img src="./trigger/choosel.png" alt="Seleccionar lección">
     </button>
-    <button class="trigger-btn" data-btn="help" title="Ayuda">
-      <img src="./trigger/help.png" alt="Ayuda">
+   <button class="trigger-btn" data-btn="help" title="Ayuda">
+    <!-- <img src="./trigger/help.png" alt="Ayuda">  -->
     </button>
     <button class="trigger-btn" data-btn="donate" title="Donar">
       <img src="./trigger/donate.png" alt="Donar">
@@ -290,12 +294,6 @@
       let selectedPersonId  = null;
       let highlightedBox    = null;
 
-
-
-const lessonBadgeConfig = {
-  right: '48vw',
-  bottom: '16vh'
-};
 
       function applyTriggerLayout(){
         document.querySelectorAll('.trigger-btn').forEach(btn => {
@@ -491,42 +489,46 @@ const lessonBadgeConfig = {
         lessonButtonsEl.appendChild(btn);
       }
 const frameMap = {
-  1:  { top: '54vh', left: '1vw', width: '33vw', height: '15vh' },
-  2:  { top: '54vh', left: '20vw', width: '33vw', height: '15vh' },
-  3:  { top: '54vh', left: '40vw', width: '33vw', height: '15vh' },
-  4:  { top: '54vh', left: '60vw', width: '33vw', height: '15vh' },
-  5:  { top: '54vh', left: '80vw', width: '33vw', height: '15vh' },
-  6:  { top: '71vh', left: '1vw', width: '33vw', height: '15vh' },
-  7:  { top: '71vh', left: '20vw', width: '33vw', height: '15vh' },
-  8:  { top: '71vh', left: '40vw', width: '33vw', height: '15vh' },
-  9:  { top: '71vh', left: '60vw', width: '33vw', height: '15vh' },
-  10: { top: '71vh', left: '76vw', width: '33vw', height: '15vh' },
-  11: { top: '35vh', left: '8vw',  width: '38vw', height: '17vh' },
-  12: { top: '35vh', left: '43vw', width: '38vw', height: '17vh' },
-  13: { top: '35vh', left: '76vw', width: '38vw', height: '17vh' },
-  14: { top: '35vh', left: '76vw', width: '38vw', height: '17vh' },
-  15: { top: '17vh', left: '76vw', width: '38vw', height: '17vh' },
-  16: { top: '17vh', left: '43vw', width: '38vw', height: '17vh' },
-  17: { top: '17vh', left: '8vw',  width: '38vw', height: '17vh' },
-  18: { top: '0vh',  left: '8vw',  width: '38vw', height: '17vh' },
-  19: { top: '0vh',  left: '43vw', width: '38vw', height: '17vh' },
-  20: { top: '0vh',  left: '76vw', width: '38vw', height: '17vh' },
+  1:  { top: '50.1vh', left: '1vw', width: '33vw', height: '15vh' },
+  2:  { top: '50.1vh', left: '20vw', width: '33vw', height: '15vh' },
+  3:  { top: '50.1vh', left: '40vw', width: '33vw', height: '15vh' },
+  4:  { top: '50.1vh', left: '60vw', width: '33vw', height: '15vh' },
+  5:  { top: '50.1vh', left: '80vw', width: '33vw', height: '15vh' },
+  6:  { top: '66.1vh', left: '1vw', width: '33vw', height: '15vh' },
+  7:  { top: '66.1vh', left: '20vw', width: '33vw', height: '15vh' },
+  8:  { top: '66.1vh', left: '40vw', width: '33vw', height: '15vh' },
+  9:  { top: '66.1vh', left: '60vw', width: '33vw', height: '15vh' },
+  10: { top: '66.1vh', left: '76vw', width: '33vw', height: '15vh' },
+  11: { top: '32.2vh', left: '8vw',  width: '35.9vw', height: '17vh' },
+  12: { top: '32.2vh', left: '30.2vh', width: '35.9vw', height: '17vh' },
+  13: { top: '32.2vh', left: '76vw', width: '35.9vw', height: '17vh' },
+  14: { top: '32.2vh', left: '63vw', width: '35.9vw', height: '17vh' },
+  15: { top: '16.1vh', left: '76vw', width: '35.9vw', height: '17vh' },
+  16: { top: '16.1vh', left: '36.2vh', width: '35.9vw', height: '17vh' },
+  17: { top: '16.1vh', left: '6vw',  width: '35.9vw', height: '17vh' },
+  18: { top: '0vh',  left: '8vw',  width: '35.9vw', height: '17vh' },
+  19: { top: '0vh',  left: '43vw', width: '35.9vw', height: '17vh' },
+  20: { top: '0vh',  left: '76vw', width: '35.9vw', height: '17vh' },
   //21  { top: '54vh', left:'75vw', width: '16vw', height: '7vh' }
   //22:{ top: '54vh', left:'74vw', width: '16vw', height: '7vh' }
 };
 
  
              const triggerConfigs = {
-  continue:  { left: '2vw',  bottom: '22vh',  width: '9vw', height: '5vh' },
-  exit:      { left: '12vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  choosel:   { left: '24vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  help:      { left: '36vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  donate:    { left: '48vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  email:     { left: '60vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  goback:    { left: '72vw', bottom: '22vh',  width: '9vw', height: '5vh' },
-  translate: { left: '87vw', bottom: '22vh',  width: '9vw', height: '5vh'  }
+  continue:  { left: '2vw',  bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  exit:      { left: '12vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  choosel:   { left: '24vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  help:      { left: '36vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  donate:    { left: '48vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  email:     { left: '60vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  goback:    { left: '72vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh' },
+  translate: { left: '87vw', bottom: '25.2vh',  width: '11.1vw', height: '5vh'  }
 };
 
+const lessonBadgeConfig = {
+  right: '48vw',
+  bottom: '18.2vh'
+};
 
 
       function showContactModal(){
